@@ -1,0 +1,7 @@
+Package: generefer
+Type: Package
+Title: Functions for finding stable reference genes in a qPCR-experiment
+Version: 0.1.0
+Authors@R: person("Daniel", "Hammarström", email = "daniel.hammarstrom@inn.no", role = c("aut", "cre"))
+Description: This package contains implementations of established and new methods for reference gene selection in qPCR-experiments.
+RoxygenNote: 6.0.1
