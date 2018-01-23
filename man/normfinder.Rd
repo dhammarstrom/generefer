@@ -4,26 +4,30 @@
 \alias{normfinder}
 \title{Analyze a data set for gene expression stability with the NormFinder algorithm}
 \usage{
-normfinder(data, Groups = TRUE, ctVal = TRUE, pStabLim = 0.25,
-  sample.cl = 1, gene.cl = 2, groups.cl = 3, cq.cl = 4)
+normfinder(data, group = TRUE, ctVal = FALSE, pStabLim = 0.3,
+  sample = "sample", gene = "gene", groups = "group", cq = "cq")
 }
 \arguments{
-\item{data}{A data frame with sample,gene and group identifier and expression values. Expression values can be raw Cq or on linear scale.}
-
-\item{Groups}{Logical, if TRUE, the function will consider grouping variables}
+\item{data}{A data frame with sample,gene and group identifier and expression values. 
+Expression values can be raw Cq or on linear scale.}
 
 \item{ctVal}{Logical, TRUE if raw Cq values}
 
 \item{pStabLim, }{numeric value on stability threshold.}
 
-\item{sample.cl}{numeric specifies the column of sample id}
+\item{sample}{Character specifies the column name of sample identifiers (default == "sample")}
 
-\item{gene.cl}{numeric specifies the column of gene id}
+\item{gene}{Character specifies the column name of gene identifiers (default == "gene")}
 
-\item{groups.cl}{numeric specifies the column of groups id}
+\item{groups}{Logical, if TRUE, the function will consider grouping variables}
 
-\item{cq.cl}{numeric specifies the column of cq/expression values}
+\item{cq}{Character specifies the column of cq-/expression-values}
+
+\item{groups}{Character specifies the column name of group identifiers}
 }
 \description{
 Analyze a data set for gene expression stability with the NormFinder algorithm
+}
+\author{
+person("Claus", " Lindbjerg Andersen", role = "aut")
 }
