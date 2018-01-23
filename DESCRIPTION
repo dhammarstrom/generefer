@@ -1,7 +1,18 @@
 Package: generefer
 Type: Package
-Title: Functions for finding stable reference genes in a qPCR-experiment
-Version: 0.1.0
-Authors@R: person("Daniel", "Hammarström", email = "daniel.hammarstrom@inn.no", role = c("aut", "cre"))
-Description: This package contains implementations of established and new methods for reference gene selection in qPCR-experiments.
+Title: Functions for finding stable reference genes in qPCR-experiments
+Version: 0.1.2
+Authors@R:  person("Daniel", "Hammarström", email = "daniel.hammarstrom@inn.no", role = c("aut", "cre"))
+Description: This package contains implementations of methods for reference gene selection in qPCR-experiments. Implemented methods are geNorm (Vandesompele et al. 2002), Normfinder (Andersen et al. 2004) and selection of stable genes in a mixed model framework (Dai et al. 2013). All methods are implemented in functions to be used with data formatted in a tidy manner (each row an observation and each column a variable).
 RoxygenNote: 6.0.1
+URL: https://github.com/dhammarstrom/generefer
+BugReports: https://github.com/dhammarstrom/generefer/issues
+License: 
+Imports: 
+  boot,
+  car,
+  dplyr,
+  ggplot2,
+  lme4,
+  lmerTest,
+  tidyr
