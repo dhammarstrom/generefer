@@ -11,7 +11,6 @@
 #' @param response character Specifying the respons column, typically expression values.
 #' @param fixed.effects character vector specifying fixed effects included in the model
 #' @param random.effect character vector specifying the random effect term, should be specified as used in lme4 e.g. (1|participant)
-#' @param interactions Logical, if TRUE, interactions between fixed effects and targets are tested in likelihood ratio tests 
 #' @param form formula Specification of formula used in lme4::lmer() for the full model
 #' @param reduced.model formula Specification of the model used in calculation of LRT and intraclass correlation
 #' @param icc.model formula specification for icc calculation, if NULL then the reduced.model is used
@@ -58,14 +57,18 @@ mixedmodel_stability<-function(data,
   
   results <- list()
   
+  data <- data.frame(data)
+  
   for(n in 1:length(n.genes)){
   
+    
+    
     # possible combinations of size n.genes
     combinations <- combn(unique(data[, which(colnames(data) == target)]), n.genes[n])
     
     # function for calculating ICC based on user defined random effects and bootstrap model
     icc.calc <- function(model){
-      icc <- as.numeric(data.frame(VarCorr(model))[1,4]) / sum(as.numeric(data.frame(VarCorr(model))[,4]))
+      icc <- as.numeric(data.frame(lme4::VarCorr(model))[1,4]) / sum(as.numeric(data.frame(lme4::VarCorr(model))[,4]))
       return(icc)
     }
     
