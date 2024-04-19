@@ -51,7 +51,7 @@ tidy_normfinder<-function(data,
       dplyr::ungroup() %>%
       dplyr::mutate(ybar = mean(expression, na.rm=TRUE))%>%
       dplyr:: group_by(gene, group)%>%
-      dplyr::mutate(N = n(), 
+      dplyr::mutate(N = dplyr::n(), 
              r_igj = sum((expression - y_ig - y_j + y_g)^2, na.rm = TRUE)/(N-1)) %>%
       dplyr::group_by(group) %>%
       dplyr::mutate(var.sum.group = sum(unique(r_igj)))%>%
@@ -73,7 +73,7 @@ tidy_normfinder<-function(data,
              t = max(sumdd / n - meanvar, 0),
              dn = dif * t / (t + var_n),
              varnew = var_n + t * var_n /(t + var_n),
-             qm = abs(dn) + sqrt(vaRnew))%>% 
+             qm = abs(dn) + sqrt(varnew))%>% 
       dplyr:: group_by(gene)%>%
       dplyr::summarise(rho = mean(qm))%>%
       dplyr::arrange(rho)
@@ -95,7 +95,7 @@ tidy_normfinder<-function(data,
       dplyr:: ungroup() %>%
       dplyr:: mutate(ybar = mean(expression, na.rm=TRUE))%>%
       dplyr:: group_by(gene)%>%
-      dplyr:: mutate(N = n(), 
+      dplyr:: mutate(N = dplyr::n(), 
              r_igj = sum((expression - y_i - y_j + ybar)^2, na.rm = TRUE)/(N-1)) %>%
       dplyr:: ungroup() %>%
       dplyr::mutate(var.sum = sum(unique(r_igj)))%>%
